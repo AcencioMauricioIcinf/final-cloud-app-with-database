@@ -141,7 +141,7 @@ def extract_answers(request):
 def show_exam_result(request, course_id, submission_id):
     submission = get_object_or_404(Submission, pk=submission_id)
     course = get_object_or_404(Course, pk=course_id)
-    choice_ids = (choice.id for choice in submission.choices.all())
+    choice_ids = [choice.id for choice in submission.choices.all()]
     questions = course.question_set.all()
     score = 0
     for question in questions:
